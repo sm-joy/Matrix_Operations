@@ -1,4 +1,5 @@
 #include "../include/Matrix.h"
+#include <utility>
 
 
 Matrix::Matrix(int p_row, int p_col, bool empty)
@@ -203,4 +204,30 @@ void Matrix::transpose()
 
 		}
 	}
+}
+
+int Matrix::det3x3() { return ((mat[0][0] * (mat[1][1] * mat[2][2] - mat[1][2] * mat[2][1])) - (mat[0][1] * (mat[1][0] * mat[2][2] - mat[1][2] * mat[2][0])) + (mat[0][2] * (mat[1][0] * mat[2][1] - mat[1][1] * mat[2][0]))); }
+
+int Matrix::det2x2() { return (mat[0][0] * mat[1][1]) - (mat[0][1] * mat[1][0]); }
+
+
+int Matrix::det()
+{
+	int res = 0;
+	if(dim.row == dim.col)
+	{
+		if(dim.row == 2)
+			res = det2x2();
+		else if(dim.row == 3)
+			res = det3x3();
+		else
+		{
+
+		}
+
+	}
+	else
+		std::cout<<"\nDimension error";
+
+	return res;
 }

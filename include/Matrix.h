@@ -28,6 +28,8 @@ public:
 	Matrix operator*(int m); //scaler multiplication
 	friend Matrix operator*(int m, const Matrix& mat1); //prefix scaler multiplication
 private:
+	int det3x3();
+	int det2x2();
 	DIMENSION dim;
 	int** mat = nullptr;
 };
